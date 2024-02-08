@@ -1,2 +1,7 @@
-Hola
-que tal
+<div *ngIf="jsonData">
+    <ul>
+        <li *ngFor="let item of jsonData">
+            {{item.nombre}} - {{item.email}} - {{item.telefono}}
+        </li>
+    </ul>
+</div>
