@@ -2,28 +2,32 @@ const express = require('express');
 const aplicacion = express();
 const puerto = 3001;
 const cors = require('cors');
+const mongoose = require('mongoose');
+
+const conexion = 'mongodb://127.0.0.1/blog';
+
+const entradasSchema = new mongoose.Schema({
+    titulo:String,
+    contenido:String,
+    fecha:String
+})
+
+const Entradas = mongoose.model("Entradas",entradasSchema)
+
 
 aplicacion.use(cors());
 aplicacion.get('/',(req,res) =>{
-    res.send(`
-    [
-        {
-            "nombre":"jose Vicente",
-            "email":"info@jocarsa.com",
-            "telefono":"1234567"
-        },
-        {
-            "nombre":"Juan",
-            "email":"juan@jocarsa.com",
-            "telefono":"1234567"
-        },
-        {
-            "nombre":"Jorge",
-            "email":"jorge@jocarsa.com",
-            "telefono":"1234567"
-        }
-    ]
-`);
+    res.send(`ok`);
+    mongoose.connect(conexion,{
+        useNewUrlParser:true,
+        useUnifiedTopology:true}
+    ).then(function(){
+        Entradas.find({})
+            .exec()
+            .then(function(entradas){
+                console.log(entradas)
+        })
+    })
 })
 
 aplicacion.listen(puerto,() =>{
