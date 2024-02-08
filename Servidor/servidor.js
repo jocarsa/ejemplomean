@@ -1,7 +1,9 @@
 const express = require('express');
 const aplicacion = express();
 const puerto = 3001;
+const cors = require('cors');
 
+aplicacion.use(cors());
 aplicacion.get('/',(req,res) =>{
     res.send(`
     [
@@ -19,7 +21,7 @@ aplicacion.get('/',(req,res) =>{
             "nombre":"Jorge",
             "email":"jorge@jocarsa.com",
             "telefono":"1234567"
-        },
+        }
     ]
 `);
 })
