@@ -9,6 +9,6 @@ export class DatosService {
 
   constructor(private http: HttpClient) { }
   getData(): Observable<any> {
-    return this.http.get<any>('http://localhost/json/clientes.json');
+    return this.http.get<any>('http://localhost:3001/');
   }
 }
