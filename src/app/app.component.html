@@ -1,7 +1,18 @@
-<div *ngIf="jsonData">
-    <ul>
-        <li *ngFor="let item of jsonData">
-            {{item.nombre}} - {{item.email}} - {{item.telefono}}
-        </li>
-    </ul>
-</div>
+<!doctype html>
+<html>
+    <head></head>
+    <body>
+        <header>
+            <h1>El blog de Jose Vicente</h1>
+        </header>
+        <main>
+            <div *ngIf="jsonData">
+                <article *ngFor="let item of jsonData">
+                    <h3>{{item.titulo}}</h3>
+                    <time>{{item.fecha}}</time>
+                    <p>{{item.contenido}}</p>
+                </article>
+            </div>
+        </main>
+    </body>
+</html>

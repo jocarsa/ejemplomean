@@ -17,7 +17,7 @@ const Entradas = mongoose.model("Entradas",entradasSchema)
 
 aplicacion.use(cors());
 aplicacion.get('/',(req,res) =>{
-    res.send(`ok`);
+    
     mongoose.connect(conexion,{
         useNewUrlParser:true,
         useUnifiedTopology:true}
@@ -25,7 +25,7 @@ aplicacion.get('/',(req,res) =>{
         Entradas.find({})
             .exec()
             .then(function(entradas){
-                console.log(entradas)
+                res.send(entradas);
         })
     })
 })
